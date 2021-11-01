@@ -1,0 +1,1 @@
+# CGS-test-camp-task
