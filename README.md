@@ -89,7 +89,7 @@ Design: [drive.google](https://drive.google.com/file/d/1uSkWwYC7yrvgDFJznxNlKPqQ
 1. Each intern will be attached to a branch (`<username>/main`);
 2. When you are working on a feature you should create a separate branch from `<username>/main` with the following name:
 `feature/<username>/<feature-name>` or `bug/<username>/<feature-name>`. Once you are done with a subtask you should create a PR into `<username>/main` and ping `Danyyl Kuchkov & Oleksii Samoilenko` for review;
-3. Title of ypur PR's should be `feat: <name of your feature>` or `bug-fix: <name of your bugfix>`. Description field should contain short info about feature/bug;
+3. Title of your PR's should be `feat: <name of your feature>` or `bug-fix: <name of your bugfix>`. Description field should contain short info about feature/bug;
 4. PR's are under review ONLY between 9AM - 9:30AM (Kyiv EET time)
 
 > If you will face with some issues with git. Ask `Danyyl Kuchkov` via slack;
