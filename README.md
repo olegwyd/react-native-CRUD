@@ -4,10 +4,13 @@
 
 ## Pre requirements
 
+1. Pull repo.
 1. If you are windows user, make sure that `bash` have been installed if not check [Installation link](https://hackernoon.com/how-to-install-bash-on-windows-10-lqb73yj3);
 2. Open Terminal in your project (make sure that you are in main directory with `hooks` folder)
 3. (ONLY FOR WINDOWS USERS) Change first line in `./hooks/commit-msg`, `./hooks/pre-commit` and `./hooks/setup/hooks` from `#!/bin/sh` to `#!/bin/bash`;
 4. Run `cat ./hooks/pre-commit` and change `USER_NAME="user_name"` on third string to `USER_NAME="<YOUR-NAME_LAST_NAME>"` Example: `USER_NAME="vasia_bumper"` and save the file.
+5. `git checkout -b <name that you have set in pre-requirements>/main`
+6. `git push origin <name that you have set in pre-requirements>/main`
 5. Run command `./hooks/setup-hooks` (FOR WINDOWS USERS `bash hooks/setup-hooks`);
 
 If you keep experiencing something like: **tslint: command not found**
@@ -86,7 +89,7 @@ Design: [drive.google](https://drive.google.com/file/d/1uSkWwYC7yrvgDFJznxNlKPqQ
 
 ## PR convention
 
-1. Each intern will be attached to a branch (`<username>/main`);
+1. Each intern will be attached to a branch (`<name that you have set in pre-requirements>/main`);
 2. When you are working on a feature you should create a separate branch from `<name that you have set in pre-requirements>/main` with the following name:
 `feature/<name that you have set in pre-requirements>/<feature-name>` or `bug/<name that you have set in pre-requirements>/<feature-name>`. Once you are done with a subtask you should create a PR into `<name that you have set in pre-requirements>/main` and ping `Danyyl Kuchkov & Oleksii Samoilenko` for review;
 3. Title of ypur PR's should be `feat: <name of your feature>` or `bug-fix: <name of your bugfix>`. Description field should contain short info about feature/bug;
