@@ -5,13 +5,15 @@
 ## Pre requirements
 
 1. Pull repo.
-1. If you are windows user, make sure that `bash` have been installed if not check [Installation link](https://hackernoon.com/how-to-install-bash-on-windows-10-lqb73yj3);
-2. Open Terminal in your project (make sure that you are in main directory with `hooks` folder)
-3. (ONLY FOR WINDOWS USERS) Change first line in `./hooks/commit-msg`, `./hooks/pre-commit` and `./hooks/setup/hooks` from `#!/bin/sh` to `#!/bin/bash`;
-4. Run `cat ./hooks/pre-commit` and change `USER_NAME="user_name"` on third string to `USER_NAME="<YOUR-NAME_LAST_NAME>"` Example: `USER_NAME="vasia_bumper"` and save the file.
-5. `git checkout -b <name that you have set in pre-requirements>/main`
-6. `git push origin <name that you have set in pre-requirements>/main`
-5. Run command `./hooks/setup-hooks` (FOR WINDOWS USERS `bash hooks/setup-hooks`);
+2. If you are windows user, make sure that `bash` have been installed if not check [Installation link](https://hackernoon.com/how-to-install-bash-on-windows-10-lqb73yj3);
+3. Open Terminal in your project (make sure that you are in main directory with `hooks` folder)
+4. (ONLY FOR WINDOWS USERS) Change first line in `./hooks/commit-msg`, `./hooks/pre-commit` and `./hooks/setup/hooks` from `#!/bin/sh` to `#!/bin/bash`;
+5. Run `cat ./hooks/pre-commit` and change `USER_NAME="user_name"` on third string to `USER_NAME="<YOUR-NAME_LAST_NAME>"` Example: `USER_NAME="vasia_bumper"` and save the file.
+6. `git checkout -b <name that you have set in pre-requirements>/main`
+7. `git push origin <name that you have set in pre-requirements>/main`
+8. Run command `./hooks/setup-hooks` (FOR WINDOWS USERS `bash hooks/setup-hooks`);
+
+Avoid Upper case! Do not use `N_Surname` syntax or `Implement-Crud-Todo` syntax
 
 If you keep experiencing something like: **tslint: command not found**
 please do the following: 
