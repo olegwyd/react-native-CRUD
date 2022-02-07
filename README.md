@@ -16,7 +16,6 @@
 
 Now you can run project by calling backend `cd ./server && yarn server` and mobile `cd ./mobile && yarn start`
 
-```
 Avoid Upper case! Do not use `N_Surname` syntax or `Implement-Crud-Todo` syntax
 
 If you keep experiencing something like: **tslint: command not found**
@@ -117,4 +116,7 @@ Design: [drive.google](https://drive.google.com/file/d/1uSkWwYC7yrvgDFJznxNlKPqQ
 [Passport](http://www.passportjs.org/)
 [Expo](https://docs.expo.io/)
 [React Query](https://react-query.tanstack.com/)
+
+```
+
 ```
