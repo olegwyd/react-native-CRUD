@@ -4,6 +4,9 @@
 
 ## Pre requirements
 
+Watch this video:
+[Hook Setup](https://www.youtube.com/watch?v=jM0Jqfmr9sc&ab_channel=CodeGenerationSoftware)
+
 1. Pull repo.
 2. If you are windows user, make sure that `bash` have been installed if not check [Installation link](https://hackernoon.com/how-to-install-bash-on-windows-10-lqb73yj3);
 3. Open Terminal in your project (make sure that you are in main directory with `hooks` folder)
