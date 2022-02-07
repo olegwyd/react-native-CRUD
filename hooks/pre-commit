@@ -2,6 +2,8 @@
 echo "Precommit hook is running..."
 USER_NAME="user_name"
 ESLINT_MOBILE="$(git rev-parse --show-toplevel)/mobile/node_modules/.bin/eslint"
+TSLINT_BACKEND="$(git rev-parse --show-toplevel)/server/node_modules/.bin/tslint"
+
 MOBILE_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^mobile)(.*)(ts$|tsx$)')
 BACKEND_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^server)(.*)(ts$)')
 PASS=true
@@ -50,7 +52,7 @@ echo "Backend validation started...";
 
 for FILE in $BACKEND_FILES
 do
-	tslint --project server/tslint.json $FILE
+	$TSLINT_BACKEND --project server/tslint.json $FILE
   if [[ "$?" == 0 ]]; then
     echo "\t\033[32m ESLint Passed: $FILE \033[0m"
   else
