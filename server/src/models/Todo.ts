@@ -4,9 +4,12 @@ import { Document, Model, model, Schema } from "mongoose";
  * @param title:string
  * @param description:string
  */
-export interface Todo extends Document {
+export interface ITodo extends Document {
   title: string;
   description: string;
+  year: String;
+  public: Boolean;
+  completed: Boolean;
 }
 
 const todosSchema: Schema = new Schema({
@@ -25,14 +28,14 @@ const todosSchema: Schema = new Schema({
   },
   public: {
     type: Boolean,
-    default: true,
+    required: true,
   },
   completed: {
     type: Boolean,
-    default: false,
+    required: true,
   },
 });
 
-const Todo: Model<Todo> = model("Todo", todosSchema);
+const Todo: Model<ITodo> = model("Todo", todosSchema);
 
 export default Todo;

@@ -5,6 +5,9 @@ import TodoService from "../services/todo.service";
 const TodoSheme = Joi.object({
   title: Joi.string().min(1).max(30).required(),
   description: Joi.string().min(1).max(200).required(),
+  year: Joi.string().min(2).max(4),
+  completed: Joi.boolean().required(),
+  public: Joi.boolean().required(),
 });
 
 export class TodoController {
