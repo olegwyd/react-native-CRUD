@@ -1,67 +1,36 @@
-import { Response, Request, NextFunction } from "express";
-import Joi from "joi";
-import TodoService from "../services/todo.service";
+import { Response, Request } from 'express';
 
-const TodoSheme = Joi.object({
-  title: Joi.string().min(1).max(30).required(),
-  description: Joi.string().min(1).max(200).required(),
-  year: Joi.string().min(2).max(4),
-  completed: Joi.boolean().required(),
-  public: Joi.boolean().required(),
-});
+import TodoService from '../services/todo.service';
 
 export class TodoController {
   constructor(private todoService: TodoService) {}
-  async getAllTodos(_: Request, res: Response, next: NextFunction) {
-    try {
-      const todos = await this.todoService.getAll();
-      res.status(200).json(todos);
-    } catch (error) {
-      next(error);
-    }
+  async getAllTodos(_: Request, res: Response) {
+    const todos = await this.todoService.getAll();
+    res.status(200).json(todos);
   }
 
-  async getSingleTodo(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-    try {
-      const todo = await this.todoService.getOne(id);
-      res.status(200).json(todo);
-    } catch (error) {
-      next(error);
-    }
+  async getSingleTodo(req: Request, res: Response) {
+    const todo = await this.todoService.getOne(req.params.id);
+    res.status(200).json(todo);
   }
 
-  async addTodo(req: Request, res: Response, next: NextFunction) {
-    const body = req.body;
-    try {
-      await TodoSheme.validateAsync(body);
-      const newPost = await this.todoService.addTodo(body);
-      await newPost.save();
-      res.status(200).json(newPost);
-    } catch (error) {
-      next(error);
-    }
+  async addTodo(req: Request, res: Response) {
+    const newPost = await this.todoService.addTodo(req.body);
+    await newPost.save();
+    res.status(200).json(newPost);
   }
 
-  async deleteTodo(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-    try {
-      await this.todoService.deleteTodo(id);
-      res.status(200).json(`Todo with id: ${id} deleted`);
-    } catch (error) {
-      next(error);
-    }
+  async deleteTodo(req: Request, res: Response) {
+    await this.todoService.deleteTodo(req.params.id);
+    res.status(200).json(`Todo with id: ${req.params.id} deleted`);
   }
-  async updateTodo(req: Request, res: Response, next: NextFunction) {
-    const { id } = req.params;
-    const body = req.body;
-    try {
-      await TodoSheme.validateAsync(body);
-      const updatedPost = await this.todoService.aupdateTodo(id, body);
-      res.status(200).json(updatedPost);
-    } catch (error) {
-      next(error);
-    }
+
+  async updateTodo(req: Request, res: Response) {
+    const updatedPost = await this.todoService.aupdateTodo(
+      req.params.id,
+      req.body
+    );
+    res.status(200).json(updatedPost);
   }
 }
 
