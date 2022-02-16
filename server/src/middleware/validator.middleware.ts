@@ -1,5 +1,5 @@
-import Joi from 'joi';
-import type { RequestHandler } from 'express';
+import Joi from "joi";
+import type { RequestHandler } from "express";
 
 const TodoSheme = Joi.object({
   title: Joi.string().min(1).max(30).required(),
@@ -9,7 +9,7 @@ const TodoSheme = Joi.object({
   public: Joi.boolean().required(),
 });
 
-export const validateBody: RequestHandler = async (req, res, next) => {
+export const validateBody: RequestHandler = async (req, _, next) => {
   try {
     await TodoSheme.validateAsync(req.body);
     next();

@@ -1,25 +1,25 @@
-import { Router, Response, Request, NextFunction } from 'express';
+import { Router, Response, Request, NextFunction } from "express";
 
-import todoController from '../../controllers/todo.controller';
-import { isExist } from '../../middleware/isExist.midleware';
-import { validateBody } from '../../middleware/validator.middleware';
+import todoController from "../../controllers/todo.controller";
+import { isExist } from "../../middleware/isExist.midleware";
+import { validateBody } from "../../middleware/validator.middleware";
 
 const todosRouter: Router = Router();
 
-todosRouter.get('', todoController.getAllTodos.bind(todoController));
+todosRouter.get("", todoController.getAllTodos.bind(todoController));
 todosRouter.get(
-  '/:id',
+  "/:id",
   isExist,
   todoController.getSingleTodo.bind(todoController)
 );
-todosRouter.post('', validateBody, todoController.addTodo.bind(todoController));
+todosRouter.post("", validateBody, todoController.addTodo.bind(todoController));
 todosRouter.delete(
-  '/:id',
+  "/:id",
   isExist,
   todoController.deleteTodo.bind(todoController)
 );
 todosRouter.put(
-  '/:id',
+  "/:id",
   isExist,
   validateBody,
   todoController.updateTodo.bind(todoController)

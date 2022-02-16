@@ -1,11 +1,11 @@
-import { Response, Request, NextFunction } from 'express';
+import { Response, Request, NextFunction } from "express";
 
-import Todo from '../models/Todo';
-import { ApiError } from '../error/ApiError';
+import Todo from "../models/Todo";
+import { ApiError } from "../error/ApiError";
 
 export const isExist = async (
   req: Request,
-  res: Response,
+  _: Response,
   next: NextFunction
 ) => {
   try {

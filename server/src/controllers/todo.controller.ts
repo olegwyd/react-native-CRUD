@@ -1,6 +1,6 @@
-import { Response, Request } from 'express';
+import { Response, Request } from "express";
 
-import TodoService from '../services/todo.service';
+import TodoService from "../services/todo.service";
 
 export class TodoController {
   constructor(private todoService: TodoService) {}
