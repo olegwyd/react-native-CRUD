@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import StackNavigator from './src/navigation/StackNavigator';
+
+const queryClient = new QueryClient();
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>We are Live!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaView>
+        <StackNavigator />
+      </SafeAreaView>
+    </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

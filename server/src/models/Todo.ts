@@ -3,13 +3,14 @@ import { Document, Model, model, Schema } from "mongoose";
  * Interface to model the Todo Schema for TypeScript.
  * @param title:string
  * @param description:string
+ *
  */
 export interface ITodo extends Document {
   title: string;
   description: string;
-  year: String;
-  public: Boolean;
-  completed: Boolean;
+  year: string;
+  public: boolean;
+  completed: boolean;
 }
 
 const todosSchema: Schema = new Schema({
@@ -28,11 +29,11 @@ const todosSchema: Schema = new Schema({
   },
   public: {
     type: Boolean,
-    required: true,
+    default: true,
   },
   completed: {
     type: Boolean,
-    required: true,
+    default: false,
   },
 });
 

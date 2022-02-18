@@ -1,0 +1,14 @@
+export const THEME = {
+  DANGER_COLOR: '#3d3b3d',
+  GREY_COLOR: '#bababa',
+  MAIN_COLOR: '#3949ab',
+  FONT_SIZE_S: 16,
+  FONT_SIZE_M: 20,
+  FONT_SIZE_L: 24,
+  FONT_SIZE_XL: 28,
+  GAP_SIZE_S: 10,
+  GAP_SIZE_M: 20,
+  GAP_SIZE_L: 50,
+  GAP_SIZE_XL: 75,
+  GAP_SIZE_XXL: 100,
+};
