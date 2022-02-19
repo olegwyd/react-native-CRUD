@@ -41,6 +41,6 @@ export default class UserService {
     });
 
     const token = generateJwt(newUser.email, newUser._id);
-    return { user: newUser, token: token };
+    return { user: newUser, token };
   }
 }

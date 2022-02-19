@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import userController from "../../controllers/user.controller";
 import validateBody from "../../middleware/user.validator.middleware";
+import isExist from "../../middleware/isUserExist.middleware";
 import authUser from "../../middleware/auth.middleware";
 
 const router: Router = Router();
@@ -12,6 +13,7 @@ const router: Router = Router();
 router.post(
   "/registration",
   validateBody,
+  isExist,
   userController.createUser.bind(userController)
 );
 router.post("/", authUser, userController.getUser.bind(userController));
