@@ -7,7 +7,7 @@ const isExist = async (req: Request, _: Response, next: NextFunction) => {
   try {
     const email = req.params.email;
     const user = await User.findOne({ email });
-    if (!user) return next(ApiError.badRequest(`User allready exist`));
+    if (user) return next(ApiError.badRequest(`User allready exist`));
     next();
   } catch (error) {
     next(error);

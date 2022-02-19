@@ -6,7 +6,7 @@ const authUser = async (req: Request, res: Response, next: NextFunction) => {
     next();
   }
   try {
-    const token = req?.headers?.authorization?.split(" ")[1]; // Bearer asfasnfkajsfnjk
+    const token = req?.headers?.authorization;
     if (!token) {
       return res.status(401).json({ message: "Not autorized user" });
     }
