@@ -1,4 +1,9 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+
+import userController from "../../controllers/user.controller";
+import validateBody from "../../middleware/user.validator.middleware";
+import isExist from "../../middleware/isUserExist.middleware";
+import authUser from "../../middleware/auth.middleware";
 
 const router: Router = Router();
 
@@ -6,10 +11,11 @@ const router: Router = Router();
 // @desc    Register user given their email and password, returns the token upon successful registration
 // @access  Public
 router.post(
-  "/register",
-  async (_: Request, res: Response) => {
-    res.send("Add registration logic there");
-  }
+  "/registration",
+  validateBody,
+  isExist,
+  userController.createUser.bind(userController)
 );
+router.post("/", authUser, userController.getUser.bind(userController));
 
 export default router;
