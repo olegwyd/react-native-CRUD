@@ -9,7 +9,7 @@ import { ITodo } from '../../../server/src/models/Todo';
 import { Form } from './Form';
 
 type RootStackParamList = {
-  TodoList: object | undefined;
+  TodoList: undefined;
 };
 
 const EditTodo: React.FC = () => {
@@ -45,7 +45,7 @@ const EditTodo: React.FC = () => {
     );
   }
 
-  return <Form todo={data as ITodo} onSubmit={onSubmit} route={route} />;
+  return <Form todo={data} onSubmit={onSubmit} route={route} />;
 };
 
 export default EditTodo;

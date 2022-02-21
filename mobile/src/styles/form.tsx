@@ -6,6 +6,14 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE_M,
     textAlign: 'center',
   },
+  inputTitle: {
+    fontSize: THEME.FONT_SIZE_S,
+    textAlign: 'left',
+    marginLeft: THEME.GAP_SIZE_S,
+  },
+  error: {
+    marginLeft: THEME.GAP_SIZE_S,
+  },
   input: {
     height: 40,
     margin: THEME.GAP_SIZE_S,
@@ -24,8 +32,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: THEME.GAP_SIZE_S,
     paddingHorizontal: THEME.GAP_SIZE_L,
-    margin: THEME.GAP_SIZE_L,
-    borderRadius: 4,
+    margin: THEME.GAP_SIZE_M,
+    borderRadius: 6,
     elevation: 3,
     backgroundColor: THEME.GREY_COLOR,
   },

@@ -20,7 +20,7 @@ class TodoServices extends HttpSerivce {
     return data;
   }
 
-  async addTodo(data: any) {
+  async addTodo(data: object) {
     const res = await this.add(this.todoUrl, data);
     return res;
   }
@@ -29,7 +29,7 @@ class TodoServices extends HttpSerivce {
     await this.delete(`${this.todoUrl}/${id}`);
   }
 
-  async editTodo(data: any) {
+  async editTodo(data: object) {
     const edited = await this.edit(`${this.todoUrl}/${data.id}`, data);
     return edited.data;
   }

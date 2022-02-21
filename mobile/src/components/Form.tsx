@@ -1,16 +1,19 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { TextInput, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { CheckBox } from 'react-native-elements';
+import { ParamListBase, RouteProp } from '@react-navigation/native';
 
 import { ITodo } from '../../../server/src/models/Todo';
-import { styles } from '../styles/form';
+import SharedTextInput from './TextInput';
 import { scheme } from '../validation/todoFormValidation';
+import { FormFieldsData } from './TextInput';
+import { styles } from '../styles/form';
 
 type Props = {
   todo: ITodo;
-  onSubmit: any;
-  route: any;
+  onSubmit: () => void;
+  route: RouteProp<ParamListBase>;
 };
 
 export const Form: React.FC<Props> = ({ route, todo, onSubmit }) => {
@@ -21,59 +24,38 @@ export const Form: React.FC<Props> = ({ route, todo, onSubmit }) => {
       </Text>
       <Formik
         initialValues={todo}
-        onSubmit={onSubmit}
         validationSchema={scheme}
+        onSubmit={onSubmit}
       >
-        {({
-          handleChange,
-          handleSubmit,
-          values,
-          setFieldValue,
-          errors,
-          setFieldTouched,
-          touched,
-          isValid,
-        }) => (
+        {({ handleSubmit, ...formik }) => (
           <View>
-            <TextInput
-              style={styles.input}
-              onChangeText={handleChange('title')}
-              onBlur={() => setFieldTouched('title')}
-              value={values.title}
-            />
-            {touched.title && errors.title && <Text>{errors.title}</Text>}
-            <TextInput
-              style={styles.textarea}
-              multiline
-              numberOfLines={4}
-              onChangeText={handleChange('description')}
-              onBlur={() => setFieldTouched('description')}
-              value={values.description}
-            />
-            {touched.description && errors.description && (
-              <Text>{errors.description}</Text>
-            )}
-            <TextInput
-              style={styles.input}
-              onChangeText={handleChange('year')}
-              onBlur={() => setFieldTouched('year')}
-              value={values.year}
-            />
-            {touched.year && errors.year && <Text>{errors.year}</Text>}
+            {FormFieldsData.map(({ name, label }) => (
+              <SharedTextInput
+                error={false}
+                name={name}
+                key={name}
+                text={label}
+                {...formik}
+              />
+            ))}
             <CheckBox
               center
-              title="Public"
-              checked={values.public}
-              onPress={() => setFieldValue('public', !values.public)}
+              title='Public'
+              checked={formik.values.public}
+              onPress={() =>
+                formik.setFieldValue('public', !formik.values.public)
+              }
             />
             <CheckBox
               center
-              title="Completed"
-              checked={values.completed}
-              onPress={() => setFieldValue('completed', !values.completed)}
+              title='Completed'
+              checked={formik.values.completed}
+              onPress={() =>
+                formik.setFieldValue('completed', !formik.values.completed)
+              }
             />
             <TouchableOpacity
-              disabled={!isValid}
+              disabled={!formik.isValid}
               style={styles.button}
               onPress={() => handleSubmit()}
             >

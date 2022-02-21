@@ -10,14 +10,14 @@ import { styles } from '../styles/Todo';
 interface Props {
   title: string;
   description: string;
-  id: any;
+  id: string;
   year: string;
   completed: boolean;
   isPublic: boolean;
 }
 
 type RootStackParamList = {
-  EditTodo: object | undefined;
+  EditTodo: object;
 };
 
 const Todo = ({ title, description, completed, isPublic, year, id }: Props) => {
@@ -57,8 +57,8 @@ const Todo = ({ title, description, completed, isPublic, year, id }: Props) => {
 
       <View>
         <View style={styles.buttonWrapper}>
-          <Button title="Edit" onPress={() => editTodo()} />
-          <Button title="Delete" onPress={() => remove()} />
+          <Button title='Edit' onPress={() => editTodo()} />
+          <Button title='Delete' onPress={() => remove()} />
         </View>
       </View>
     </View>
