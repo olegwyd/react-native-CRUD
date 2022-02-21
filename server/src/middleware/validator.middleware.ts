@@ -7,6 +7,7 @@ const TodoSheme = Joi.object({
   year: Joi.string().min(2).max(4),
   completed: Joi.boolean().required(),
   public: Joi.boolean().required(),
+  id: Joi.string(),
 });
 
 export const validateBody: RequestHandler = async (req, _, next) => {
