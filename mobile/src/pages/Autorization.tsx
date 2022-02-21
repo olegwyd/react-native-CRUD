@@ -36,7 +36,7 @@ const Autorization = () => {
 
   const onSubmit = async (values: any) => {
     const user = await userService.login(values);
-    localStorage.setItem('token', user);
+    localStorage.setItem('token', user.data);
     if (user) navigation.navigate('TodoList');
   };
   return (
