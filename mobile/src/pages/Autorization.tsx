@@ -6,6 +6,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import SharedTextInput from '../components/TextInput';
 import userService from '../service/user.service';
+import { scheme } from '../validation/auth.validation';
 
 const regForm: any = {
   userName: '',
@@ -41,7 +42,11 @@ const Autorization = () => {
   return (
     <View>
       <Text>Registration</Text>
-      <Formik onSubmit={onSubmit} initialValues={regForm}>
+      <Formik
+        onSubmit={onSubmit}
+        initialValues={regForm}
+        validationSchema={scheme}
+      >
         {({ handleSubmit, ...formik }) => (
           <View>
             {FormFieldsData.map(({ name, label }) => (
