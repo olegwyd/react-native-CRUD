@@ -3,7 +3,6 @@ import { Router } from "express";
 import userController from "../../controllers/user.controller";
 import validateBody from "../../middleware/user.validator.middleware";
 import isExist from "../../middleware/isUserExist.middleware";
-import authUser from "../../middleware/auth.middleware";
 
 const router: Router = Router();
 
@@ -16,6 +15,6 @@ router.post(
   isExist,
   userController.createUser.bind(userController)
 );
-router.post("/", authUser, userController.getUser.bind(userController));
+router.post("/", userController.getUser.bind(userController));
 
 export default router;

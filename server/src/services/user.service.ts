@@ -40,7 +40,7 @@ export default class UserService {
       userName: userName,
     });
 
-    const token = generateJwt(newUser.email, newUser._id);
+    const token = generateJwt(newUser._id, newUser.email);
     return { user: newUser, token };
   }
 }
