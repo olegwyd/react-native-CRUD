@@ -22,6 +22,10 @@ class HttpSerivce {
     return this.fetchingService.get(this.getUrl(url));
   }
 
+  getFiltered(url: string, params: object) {
+    return this.fetchingService.get(`${this.getUrl(url)}/search`, { params });
+  }
+
   add(url: string, data: object) {
     return this.fetchingService.post(this.getUrl(url), data);
   }
