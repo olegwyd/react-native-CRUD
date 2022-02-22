@@ -8,11 +8,14 @@ import SharedTextInput from '../components/TextInput';
 import userService from '../service/user.service';
 import { scheme } from '../validation/auth.validation';
 
-const regForm: object = {
-  userName: '',
+type AuthForm = {
+  email: string;
+  password: string;
+};
+
+const authForm: AuthForm = {
   email: '',
   password: '',
-  varifyPassword: '',
 };
 
 const FormFieldsData = [
@@ -34,7 +37,7 @@ const Autorization = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const onSubmit = async (values: object) => {
+  const onSubmit = async (values: AuthForm) => {
     const user = await userService.login(values);
     localStorage.setItem('token', user.data);
     if (user) navigation.navigate('TodoList');
@@ -44,7 +47,7 @@ const Autorization = () => {
       <Text>Registration</Text>
       <Formik
         onSubmit={onSubmit}
-        initialValues={regForm}
+        initialValues={authForm}
         validationSchema={scheme}
       >
         {({ handleSubmit, ...formik }) => (
