@@ -8,7 +8,7 @@ import SharedTextInput from '../components/TextInput';
 import userService from '../service/user.service';
 import { scheme } from '../validation/register.validation';
 
-const regForm: any = {
+const regForm: object = {
   userName: '',
   email: '',
   password: '',
@@ -42,7 +42,7 @@ const Registration = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async (values: object) => {
     const user = await userService.register(values);
     localStorage.setItem('token', user?.data?.token);
     if (user) navigation.navigate('TodoList');
