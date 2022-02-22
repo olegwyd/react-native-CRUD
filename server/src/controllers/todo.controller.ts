@@ -14,6 +14,15 @@ export class TodoController {
     res.status(200).json(todo);
   }
 
+  async getToDoBySearch(req: Request, res: Response) {
+    const { name, text } = req.query;
+    const data = await this.todoService.getBySearch(
+      name as string,
+      text as string
+    );
+    res.status(200).json(data);
+  }
+
   async addTodo(req: Request, res: Response) {
     const newPost = await this.todoService.addTodo(req.body);
     await newPost.save();

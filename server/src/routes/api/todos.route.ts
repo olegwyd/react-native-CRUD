@@ -6,6 +6,7 @@ import { validateBody } from "../../middleware/validator.middleware";
 
 const todosRouter: Router = Router();
 
+todosRouter.get("/search", todoController.getToDoBySearch.bind(todoController));
 todosRouter.get("", todoController.getAllTodos.bind(todoController));
 todosRouter.get(
   "/:id",

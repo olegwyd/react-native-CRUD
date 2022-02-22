@@ -1,7 +1,8 @@
 import Todo from "../models/Todo";
 
 interface Todo {
-  id: string;
+  title: string;
+  description: string;
 }
 
 export default class TodoService {
@@ -9,6 +10,16 @@ export default class TodoService {
     const todos = await Todo.find();
     return todos;
   }
+
+  async getBySearch(name: string, text: string) {
+    const title = new RegExp(name, "i");
+    const description = new RegExp(text, "i");
+    const todo = await Todo.find({
+      $or: [{ title, description }],
+    });
+    return todo;
+  }
+
   async getOne(id: string) {
     const todo = await Todo.findById(id);
     return todo;
