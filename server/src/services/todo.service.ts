@@ -11,13 +11,20 @@ export default class TodoService {
     return todos;
   }
 
-  async getBySearch(name: string, text: string) {
+  async getBySearch(name: string, text: string, page: string) {
     const title = new RegExp(name, "i");
     const description = new RegExp(text, "i");
+    const limit = 4;
+    const startIndex = (Number(page) - 1) * limit;
+    const total = await Todo.countDocuments({});
+
     const todo = await Todo.find({
       $or: [{ title, description }],
-    });
-    return todo;
+    }).limit(limit)
+    .skip(startIndex);
+    return {data: todo,
+      currentPage: Number(page),
+      numberOfPage: Math.ceil(total / limit)};
   }
 
   async getOne(id: string) {

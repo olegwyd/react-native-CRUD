@@ -15,10 +15,11 @@ export class TodoController {
   }
 
   async getToDoBySearch(req: Request, res: Response) {
-    const { name, text } = req.query;
-    const data = await this.todoService.getBySearch(
+    const { name, text, page } = req.query;
+    const { data } = await this.todoService.getBySearch(
       name as string,
-      text as string
+      text as string,
+      page as string
     );
     res.status(200).json(data);
   }

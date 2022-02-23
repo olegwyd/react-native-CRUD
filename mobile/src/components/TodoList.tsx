@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, FlatList } from 'react-native';
 import { useQuery } from 'react-query';
 import { Link } from '@react-navigation/native';
@@ -7,12 +7,16 @@ import todoService from '../service/todo.service';
 import { styles } from '../styles/TodoList';
 import Todo from './Todo';
 import Filter from './Filter';
+import { Pagination } from './Pagination';
 
 const TodoList: React.FC = () => {
-  const { data } = useQuery('todos', () => todoService.getAllTodos());
+  const [page, setPage] = useState(1);
+  const { data } = useQuery(['todos', page], () =>
+    todoService.getAllFiltered({ page }),
+  );
   return (
     <View style={styles.container}>
-      <Filter />
+      <Filter page={page} setPage={setPage} />
       <Link
         style={styles.button}
         to={{
@@ -41,6 +45,11 @@ const TodoList: React.FC = () => {
               )}
             />
           </View>
+          <Pagination
+            page={page}
+            setPage={setPage}
+            numberOfPage={data.numbeOfPage}
+          />
         </>
       )}
     </View>
