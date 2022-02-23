@@ -5,13 +5,14 @@ import { Link } from '@react-navigation/native';
 
 import todoService from '../service/todo.service';
 import { styles } from '../styles/TodoList';
-
 import Todo from './Todo';
+import Filter from './Filter';
 
 const TodoList: React.FC = () => {
   const { data } = useQuery('todos', () => todoService.getAllTodos());
   return (
     <View style={styles.container}>
+      <Filter />
       <Link
         style={styles.button}
         to={{

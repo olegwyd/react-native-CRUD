@@ -15,6 +15,11 @@ class TodoServices extends HttpSerivce {
     return data;
   }
 
+  async getAllFiltered(params: object) {
+    const data = await this.getFiltered(this.todoUrl, params);
+    return data;
+  }
+
   async getSingleTodo(id: string) {
     const { data } = await this.get(`${this.todoUrl}/${id}`);
     return data;
